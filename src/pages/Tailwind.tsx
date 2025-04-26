@@ -35,7 +35,7 @@ function Tailwind() {
           Tailwind CSS Components
         </h5>
         <p className="font-normal text-gray-700 dark:text-gray-400">
-          This page demonstrates how easy it is to create beautiful components using Tailwind CSS. The cards below are built using Tailwind CSS and React.
+          This page demonstrates how easy it is to create components using Tailwind CSS. Everything on this page is built using tailwind classes with the cards below packaged into their own component.
         </p>
       </a>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 max-w-[1400px] mx-auto">

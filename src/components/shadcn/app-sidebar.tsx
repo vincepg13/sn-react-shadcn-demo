@@ -31,7 +31,7 @@ const items = [
   },
   {
     title: "Servicenow",
-    url: "/snow",
+    url: "/snow?table=problem&query=active=true^ORDERBYDESCnumber",
     icon: BetweenHorizonalStart,
   },
 ];

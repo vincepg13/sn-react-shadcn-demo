@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@source '../../sn-data-table/src';
-/* @source '../node_modules/@sn-react/sn-data-table/dist'; */
+/* @source '../../sn-react-shadcn/src'; */
+@source '../node_modules/sn-shadcn-kit/dist';
 
 @custom-variant dark (&:is(.dark *));
 

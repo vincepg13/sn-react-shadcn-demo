@@ -1,6 +1,6 @@
 import { defineConfig, loadEnv } from "vite";
 import path from "path";
-import react from "@vitejs/plugin-react-swc"; // <-- change to swc
+import react from "@vitejs/plugin-react-swc";
 import tailwindcss from "@tailwindcss/vite";
 import { viteSingleFile } from "vite-plugin-singlefile";
 
@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => {
         "/api": process.env.VITE_DEV_URL || "",
       },
       fs: {
-        allow: [".."], // <-- very important
+        allow: [".."],
       },
     },
     build: {
@@ -27,11 +27,11 @@ export default defineConfig(({ mode }) => {
         "@": path.resolve(__dirname, "./src"),
         react: path.resolve("./node_modules/react"),
         "react-dom": path.resolve("./node_modules/react-dom"),
-        "@sn-react/shadcn-kit": path.resolve(__dirname, "../sn-data-table/src"),
+        "sn-shadcn-kit": path.resolve(__dirname, "../sn-react-shadcn/src"),
       },
     },
     optimizeDeps: {
-      exclude: ["@sn-react/shadcn-kit"],
+      exclude: ["sn-shadcn-kit"],
     },
   };
 });
