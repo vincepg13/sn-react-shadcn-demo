@@ -16,3 +16,9 @@ Once you have you instance connected, spend some time exploring the repo:
 - Tailwind (V4) example components are kept in the components/tailwind. You can view these on the Tailwind page.
 - Shadcn example components are kept in the components/shadcn folder. You can view these on the Shadcn/ui page.
 - ServiceNow shadcn kit are in use on the Servicenow page. You can see how these are used in pages/servicenow.tsx
+
+Demo Images:
+![Homepage Welcome](/assets/SN%20Welcome%20Demo.png)
+![Shadcn Components Demo](/assets/Sn%20Shadcn%20Demo.png)
+![SnTable Demo](/assets/SN%20Table%20Demo.png)
+
