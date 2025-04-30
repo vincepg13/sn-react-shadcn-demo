@@ -30,8 +30,13 @@ const items = [
     icon: ChartNoAxesColumnIncreasing,
   },
   {
-    title: "Servicenow",
+    title: "ServiceNow Tables",
     url: "/snow?table=problem&query=active=true^ORDERBYDESCnumber",
+    icon: BetweenHorizonalStart,
+  },
+  {
+    title: "ServiceNow UI",
+    url: "/snow_ui",
     icon: BetweenHorizonalStart,
   },
 ];
