@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { SnTable } from "sn-shadcn-kit";
 
-export default function Servicenow() {
+export default function SnTableDemo() {
   const location = useLocation();
   const searchParams = useMemo(
     () => new URLSearchParams(location.search),
