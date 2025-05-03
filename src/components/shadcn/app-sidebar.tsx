@@ -1,4 +1,4 @@
-import { Home, Wind, BetweenHorizonalStart, ChartNoAxesColumnIncreasing } from "lucide-react";
+import { Home, Wind, TableOfContents, UsersRound, ChartNoAxesColumnIncreasing } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSidebar } from "../ui/sidebar";
 import {
@@ -32,12 +32,12 @@ const items = [
   {
     title: "ServiceNow Tables",
     url: "/snow?table=problem&query=active=true^ORDERBYDESCnumber",
-    icon: BetweenHorizonalStart,
+    icon: TableOfContents,
   },
   {
-    title: "ServiceNow UI",
-    url: "/snow_ui",
-    icon: BetweenHorizonalStart,
+    title: "ServiceNow Users",
+    url: "/snow_user",
+    icon: UsersRound,
   },
 ];
 
