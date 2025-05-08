@@ -1,4 +1,4 @@
-import { Home, Wind, TableOfContents, UsersRound, ChartNoAxesColumnIncreasing } from "lucide-react";
+import { Home, Wind, ClipboardPen, TableOfContents, UsersRound, ChartNoAxesColumnIncreasing } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSidebar } from "../ui/sidebar";
 import {
@@ -38,6 +38,11 @@ const items = [
     title: "ServiceNow Users",
     url: "/snow_user",
     icon: UsersRound,
+  },
+  {
+    title: "ServiceNow Form",
+    url: "/snow_form",
+    icon: ClipboardPen,
   },
 ];
 
