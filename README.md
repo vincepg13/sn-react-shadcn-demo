@@ -4,7 +4,18 @@ This is a template for a react app which can encorporate both tailwind and shadc
 
 This repo also demonstrates how to use compnents supplied by the [sn-shadcn-kit package](https://www.npmjs.com/package/sn-shadcn-kit)
 
-To use this template and connect it to a specific ServiceNow instance:
+## Instance Install
+If you just want to see how this demo looks on your instance then you can download the ["Shadcn-Kit-Demo.xml"](/assets/Shadcn-Kit-Demo.xml) from the assets folder. 
+
+This contains an update set which will install the scope "React - x_659318_react", as well as its global dependencies, which is what ends up being built if you follow the steps below. This way you can quickly see what the app is like directly on your instance without having to build it yourself.
+
+The update set may complain about some errors but it will install fine. I'd only recommend installing onto a sub production instance.
+
+Once its install visit https://<your_instance>/api/x_659318_react/react/test_app
+
+## Local Build & Deploy
+
+To use this template and connect it to a specific ServiceNow instance via a local build and deploy:
 - Clone the repo
 - Create a .env file in the root folder with the following entries. This will allow you to connect to an instance from the dev server 
   - VITE_REACT_APP_USER - ServiceNow user name to 
