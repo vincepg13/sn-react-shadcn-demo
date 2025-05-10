@@ -3,7 +3,6 @@ import { SnRecordPicker, SnRecordPickerItem, SnUserCard } from "sn-shadcn-kit";
 
 export default function SnUserDemo() {
   const [selected, setSelected] = useState<SnRecordPickerItem[]>([]);
-  console.log("Selected", selected);
 
   return (
     <div className="">

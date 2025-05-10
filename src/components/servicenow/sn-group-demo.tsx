@@ -2,14 +2,12 @@ import { useState } from "react";
 import { SnRecordPicker, SnRecordPickerItem, SnGroupWrapper, SnRow } from "sn-shadcn-kit";
 
 function getImLink(member: SnRow, key: string) {
-  // console.log("GETTING IM LINK", member);
   const email = member?.[key]?.value;
   return email ? `https://teams.microsoft.com/l/chat/0/0?users=${email}` : '';
 }
 
 export default function SnGroupDemo() {
   const [selected, setSelected] = useState<SnRecordPickerItem | null>(null);
-  console.log("Selected Group", selected);
 
   return (
     <div className="">

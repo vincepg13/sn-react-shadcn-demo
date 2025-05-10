@@ -41,7 +41,7 @@ const items = [
   },
   {
     title: "ServiceNow Form",
-    url: "/snow_form",
+    url: "/snow_form?table=" + import.meta.env.VITE_SCOPE_KEY + "react_demo&guid=-1",
     icon: ClipboardPen,
   },
 ];
