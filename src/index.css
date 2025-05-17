@@ -3,6 +3,8 @@
 
 @source '../../sn-react-shadcn/src';
 /* @source '../node_modules/sn-shadcn-kit/dist'; */
+@import "./styles/tiptap/index.css";
+
 
 @custom-variant dark (&:is(.dark *));
 

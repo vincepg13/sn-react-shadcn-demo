@@ -3,7 +3,10 @@ import { useLocation } from "react-router-dom";
 import { SnFormWrapper } from "sn-shadcn-kit";
 
 export default function SnFormDemo() {
-  const api = import.meta.env.VITE_FORM_DATA_API;
+  const apis = {
+    formData: import.meta.env.VITE_FORM_DATA_API,
+    refDisplay: import.meta.env.VITE_REF_DISPLAY_API
+  };
   const testTable = `${import.meta.env.VITE_SCOPE_KEY}react_demo`;
 
   const location = useLocation();
@@ -11,7 +14,7 @@ export default function SnFormDemo() {
 
   const [table, setTable] = useState(searchParams.get("table") || testTable);
   const [guid, setGuid] = useState(searchParams.get("guid") || "-1");
-  const [apiUrl, setApiUrl] = useState(`${api}/${table}/${guid}`);
+  const [apiUrl, setApiUrl] = useState(`${apis.formData}/${table}/${guid}`);
 
   useEffect(() => {
     const newTable = searchParams.get("table") || testTable;
@@ -19,12 +22,12 @@ export default function SnFormDemo() {
 
     setTable(newTable);
     setGuid(newGuid);
-    setApiUrl(`${api}/${newTable}/${newGuid}`);
-  }, [api, searchParams, testTable]);
+    setApiUrl(`${apis.formData}/${newTable}/${newGuid}`);
+  }, [apis.formData, searchParams, testTable]);
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
-      <SnFormWrapper api={apiUrl} table={table} guid={guid} />
+      <SnFormWrapper apis={{ ...apis, formData: apiUrl }} table={table} guid={guid} />
     </div>
   );
 }
