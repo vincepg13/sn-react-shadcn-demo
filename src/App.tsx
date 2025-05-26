@@ -7,6 +7,7 @@ import ServicenowForm from "./pages/Servicenow-form";
 import ServicenowUsers from "./pages/Servicenow-users";
 import { ThemeProvider } from "./components/theme-provider";
 import { HashRouter, Route, Routes } from "react-router-dom";
+import ServicenowUi from "./pages/Servicenow-ui";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="tailwind" element={<Tailwind />} />
             <Route path="shadcn" element={<Shadcn />} />
             <Route path="snow" element={<Servicenow />} />
+            <Route path="snow_ui" element={<ServicenowUi />} />
             <Route path="snow_user" element={<ServicenowUsers />} />
             <Route path="snow_form" element={<ServicenowForm />} />
           </Route>

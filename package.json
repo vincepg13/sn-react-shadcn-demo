@@ -38,7 +38,7 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.56.1",
     "recharts": "^2.15.3",
-    "sn-shadcn-kit": "^1.2.1",
+    "sn-shadcn-kit": "^1.2.3",
     "sonner": "^2.0.3",
     "tailwind-merge": "^3.2.0",
     "tailwindcss": "^4.0.13",
