@@ -1,4 +1,12 @@
-import { Home, Wind, ClipboardPen, TableOfContents, UsersRound, ChartNoAxesColumnIncreasing } from "lucide-react";
+import {
+  Home,
+  Wind,
+  ClipboardPen,
+  TableOfContents,
+  UsersRound,
+  ChartNoAxesColumnIncreasing,
+  AppWindow,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSidebar } from "../ui/sidebar";
 import {
@@ -30,9 +38,9 @@ const items = [
     icon: ChartNoAxesColumnIncreasing,
   },
   {
-    title: "ServiceNow Tables",
-    url: "/snow?table=problem&query=active=true^ORDERBYDESCnumber",
-    icon: TableOfContents,
+    title: "ServiceNow UI",
+    url: "/snow_ui",
+    icon: AppWindow,
   },
   {
     title: "ServiceNow Users",
@@ -41,8 +49,16 @@ const items = [
   },
   {
     title: "ServiceNow Form",
-    url: "/snow_form?table=" + import.meta.env.VITE_SCOPE_KEY + "react_demo&guid=-1",
+    url:
+      "/snow_form?table=" +
+      import.meta.env.VITE_SCOPE_KEY +
+      "react_demo&guid=-1",
     icon: ClipboardPen,
+  },
+  {
+    title: "ServiceNow Tables",
+    url: "/snow?table=problem&query=active=true^ORDERBYDESCnumber",
+    icon: TableOfContents,
   },
 ];
 
