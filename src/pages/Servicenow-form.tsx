@@ -37,7 +37,7 @@ export default function ServicenowForm() {
           <span>You can use "<em>table</em>" and "<em>guid</em>" query parameters to test with different tables</span>
         </AlertDescription>
       </Alert>
-      <div className="max-w-5xl mx-auto p-8 bg-card rounded-lg inset-shadow-xs shadow-lg">
+      <div className="max-w-5xl mx-auto p-4 md:p-8 bg-card rounded-lg inset-shadow-xs shadow-lg">
         <SnFormDemo />
       </div>
     </>
