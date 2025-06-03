@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SnRecordPickerItem, SnRecordPicker, SnClippy, SnActivity } from "sn-shadcn-kit";
+import { SnRecordPickerItem, SnRecordPicker, SnClippy, SnActivity, SnConditionBuilder } from "sn-shadcn-kit";
 import { SnTabsDemo } from "./sn-tabs-demo";
 import { useUser } from "@/context/user-context";
 import { Separator } from "../ui/separator";
@@ -73,10 +73,19 @@ export function SnUiDemo() {
     </div>
   );
 
+  const conditionNode = (
+    <SnConditionBuilder table="x_659318_react_demo" encodedQuery="bool=true^ORdecimal<5^ORtitleISNOTEMPTY^priority=low^NQsys_created_onONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()" />
+  );
+
   return (
     <div>
       <h2 className="text-xl font-semibold mb-4">General ServiceNow UI Components</h2>
-      <SnTabsDemo picker={pickerNode} attachments={attachmentsNode} activity={activityNode} />
+      <SnTabsDemo
+        picker={pickerNode}
+        attachments={attachmentsNode}
+        activity={activityNode}
+        conditions={conditionNode}
+      />
     </div>
   );
 }

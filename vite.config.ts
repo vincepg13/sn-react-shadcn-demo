@@ -53,12 +53,12 @@ export default defineConfig(({ mode }) => {
         "@": path.resolve(__dirname, "./src"),
         react: path.resolve("./node_modules/react"),
         "react-dom": path.resolve("./node_modules/react-dom"),
-        // "@kit": path.resolve(__dirname, "../sn-react-shadcn/src"), //dev only
-        // "sn-shadcn-kit": path.resolve(__dirname, "../sn-react-shadcn/src"), //dev only
+        "@kit": path.resolve(__dirname, "../sn-react-shadcn/src"), //dev only
+        "sn-shadcn-kit": path.resolve(__dirname, "../sn-react-shadcn/src"), //dev only
       },
     },
     optimizeDeps: {
-      // exclude: ["sn-shadcn-kit"], //dev only
+      exclude: ["sn-shadcn-kit"], //dev only
     },
   };
 });
