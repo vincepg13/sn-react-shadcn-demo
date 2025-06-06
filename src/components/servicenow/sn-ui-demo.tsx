@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SnRecordPickerItem, SnRecordPicker, SnClippy, SnActivity, SnConditionBuilder } from "sn-shadcn-kit";
 import { SnTabsDemo } from "./sn-tabs-demo";
 import { useUser } from "@/context/user-context";
 import { Separator } from "../ui/separator";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function getInstance() {
   return import.meta.env.MODE === "development" ? import.meta.env.VITE_DEV_URL : window.location.origin;
@@ -13,6 +14,21 @@ export function SnUiDemo() {
   const [demoUser, setDemoUser] = useState<SnRecordPickerItem | null>(null);
   const [demoProblem, setDemoProblem] = useState<SnRecordPickerItem | null>(null);
   const [demoIncident, setDemoIncident] = useState<SnRecordPickerItem | null>(null);
+
+  const location = useLocation();
+  const searchParams = useMemo(() => new URLSearchParams(location.search), [location.search]);
+
+  const testTable = "x_659318_react_demo";
+  const testQuery = ""
+  const [table, setTable] = useState(searchParams.get("table") || testTable);
+  const [guid, setGuid] = useState(searchParams.get("guid") || testQuery);
+  useEffect(() => {
+    const newTable = searchParams.get("table") || testTable;
+    const newGuid = searchParams.get("guid") || testQuery;
+
+    setTable(newTable);
+    setGuid(newGuid);
+  }, [searchParams, testTable]);
 
   const pickerNode = (
     <div className="p-4 bg-muted rounded-xl flex flex-col gap-2">
@@ -73,13 +89,12 @@ export function SnUiDemo() {
     </div>
   );
 
-  const conditionNode = (
-    <SnConditionBuilder table="x_659318_react_demo" encodedQuery="bool=true^ORdecimal<5^ORtitleISNOTEMPTY^priority=low^NQsys_created_onONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()" />
-  );
+  const conditionNode = <SnConditionBuilder table={table} encodedQuery={guid} />;
 
   return (
     <div>
       <h2 className="text-xl font-semibold mb-4">General ServiceNow UI Components</h2>
+
       <SnTabsDemo
         picker={pickerNode}
         attachments={attachmentsNode}
