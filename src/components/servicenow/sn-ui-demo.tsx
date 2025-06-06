@@ -3,7 +3,7 @@ import { SnRecordPickerItem, SnRecordPicker, SnClippy, SnActivity, SnConditionBu
 import { SnTabsDemo } from "./sn-tabs-demo";
 import { useUser } from "@/context/user-context";
 import { Separator } from "../ui/separator";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function getInstance() {
   return import.meta.env.MODE === "development" ? import.meta.env.VITE_DEV_URL : window.location.origin;
