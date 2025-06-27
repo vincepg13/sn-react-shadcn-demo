@@ -1,20 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import {
-  SnRecordPickerItem,
-  SnRecordPicker,
-  SnClippy,
-  SnActivity,
-  SnConditionBuilder,
-} from "sn-shadcn-kit";
+import { SnRecordPickerItem, SnRecordPicker, SnClippy, SnActivity, SnFilter } from "sn-shadcn-kit";
 import { SnTabsDemo } from "./sn-tabs-demo";
 import { useUser } from "@/context/user-context";
 import { Separator } from "../ui/separator";
 import { useLocation } from "react-router-dom";
 
 function getInstance() {
-  return import.meta.env.MODE === "development"
-    ? import.meta.env.VITE_DEV_URL
-    : window.location.origin;
+  return import.meta.env.MODE === "development" ? import.meta.env.VITE_DEV_URL : window.location.origin;
 }
 
 export function SnUiDemo() {
@@ -22,41 +14,24 @@ export function SnUiDemo() {
   const testQuery = "";
   const user = useUser();
   const location = useLocation();
-  const searchParams = useMemo(
-    () => new URLSearchParams(location.search),
-    [location.search]
-  );
+  const searchParams = useMemo(() => new URLSearchParams(location.search), [location.search]);
   const [demoUser, setDemoUser] = useState<SnRecordPickerItem | null>(null);
-  const [demoProblem, setDemoProblem] = useState<SnRecordPickerItem | null>(
-    null
-  );
-  const [demoIncident, setDemoIncident] = useState<SnRecordPickerItem | null>(
-    null
-  );
+  const [demoProblem, setDemoProblem] = useState<SnRecordPickerItem | null>(null);
+  const [demoIncident, setDemoIncident] = useState<SnRecordPickerItem | null>(null);
 
-  const [table, setTable] = useState<SnRecordPickerItem|null>(null)
-  // const [table, setTable] = useState<SnRecordPickerItem>({
-  //   value: "problem",
-  //   display_value: "Problem",
-  //   meta: {
-  //     name: { value: "problem", display_value: "Problem" },
-  //   },
-  // });
+  const [table, setTable] = useState<SnRecordPickerItem | null>(null);
   const [query, setQuery] = useState(searchParams.get("query") || testQuery);
 
   useEffect(() => {
-    // const newTable = searchParams.get("table") || testTable;
     const newQuery = searchParams.get("query") || testQuery;
-
-    // setTable(newTable);
     setQuery(newQuery);
   }, [searchParams, testTable]);
 
   const pickerNode = (
     <div className="p-4 bg-muted rounded-xl flex flex-col gap-2">
       <span className="text-sm text-muted-foreground">
-        If you need to select a record outside of a form context, you can use
-        SnRecordPicker. For example, try selecting a user below:
+        If you need to select a record outside of a form context, you can use SnRecordPicker. For example, try selecting
+        a user below:
       </span>
       <SnRecordPicker
         table="sys_user"
@@ -73,8 +48,7 @@ export function SnUiDemo() {
   const attachmentsNode = (
     <div className="p-4 bg-muted rounded-xl ">
       <div className="text-sm text-muted-foreground mb-2">
-        SnClippy will allow you to view attachments for a given record. Select a
-        problem record below to test out clippy{" "}
+        SnClippy will allow you to view attachments for a given record. Select a problem record below to test out clippy{" "}
       </div>
       <div className="flex justify-center items-center gap-2">
         <SnRecordPicker
@@ -87,13 +61,7 @@ export function SnUiDemo() {
           }}
           placeholder="Select a problem record"
         />
-        {demoProblem && (
-          <SnClippy
-            instance={getInstance()}
-            table="problem"
-            guid={demoProblem.value}
-          />
-        )}
+        {demoProblem && <SnClippy instance={getInstance()} table="problem" guid={demoProblem.value} />}
       </div>
     </div>
   );
@@ -113,12 +81,7 @@ export function SnUiDemo() {
       />
       {demoIncident && <Separator />}
       {demoIncident && (
-        <SnActivity
-          table="incident"
-          guid={demoIncident.value}
-          user={user.guid}
-          fullWidth={true}
-        ></SnActivity>
+        <SnActivity table="incident" guid={demoIncident.value} user={user.guid} fullWidth={true}></SnActivity>
       )}
     </div>
   );
@@ -137,13 +100,16 @@ export function SnUiDemo() {
       />
       {table && (
         <>
-      <Separator />
+          <Separator />
 
-        <SnConditionBuilder
-          table={table.meta!.name.value}
-          encodedQuery={query}
-          onQueryBuilt={(q) => alert(`Encoded Query: ${q}`)}
-        />
+          <SnFilter
+            table={table.meta!.name.value}
+            encodedQuery={query}
+            initialOpenState="open"
+            onQueryBuilt={(q) => {
+              console.log("Q:", q);
+            }}
+          />
         </>
       )}
     </div>
@@ -151,9 +117,7 @@ export function SnUiDemo() {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">
-        General ServiceNow UI Components
-      </h2>
+      <h2 className="text-xl font-semibold mb-4">General ServiceNow UI Components</h2>
 
       <SnTabsDemo
         picker={pickerNode}
