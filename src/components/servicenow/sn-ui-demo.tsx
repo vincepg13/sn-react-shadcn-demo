@@ -1,18 +1,31 @@
-import { useState } from "react";
-import { SnRecordPickerItem, SnRecordPicker, SnClippy, SnActivity } from "sn-shadcn-kit";
+import { useEffect, useMemo, useState } from "react";
+import { SnRecordPickerItem, SnRecordPicker, SnClippy, SnActivity, SnFilter } from "sn-shadcn-kit";
 import { SnTabsDemo } from "./sn-tabs-demo";
 import { useUser } from "@/context/user-context";
 import { Separator } from "../ui/separator";
+import { useLocation } from "react-router-dom";
 
 function getInstance() {
   return import.meta.env.MODE === "development" ? import.meta.env.VITE_DEV_URL : window.location.origin;
 }
 
 export function SnUiDemo() {
+  const testTable = "problem";
+  const testQuery = "";
   const user = useUser();
+  const location = useLocation();
+  const searchParams = useMemo(() => new URLSearchParams(location.search), [location.search]);
   const [demoUser, setDemoUser] = useState<SnRecordPickerItem | null>(null);
   const [demoProblem, setDemoProblem] = useState<SnRecordPickerItem | null>(null);
   const [demoIncident, setDemoIncident] = useState<SnRecordPickerItem | null>(null);
+
+  const [table, setTable] = useState<SnRecordPickerItem | null>(null);
+  const [query, setQuery] = useState(searchParams.get("query") || testQuery);
+
+  useEffect(() => {
+    const newQuery = searchParams.get("query") || testQuery;
+    setQuery(newQuery);
+  }, [searchParams, testTable]);
 
   const pickerNode = (
     <div className="p-4 bg-muted rounded-xl flex flex-col gap-2">
@@ -73,10 +86,45 @@ export function SnUiDemo() {
     </div>
   );
 
+  const conditionNode = (
+    <div className="flex flex-col gap-6">
+      <SnRecordPicker
+        table="sys_db_object"
+        fields={["label", "name"]}
+        metaFields={["name", "label"]}
+        value={table}
+        onChange={(record) => {
+          return setTable(record as SnRecordPickerItem);
+        }}
+        placeholder="Select a table to view its condition builder"
+      />
+      {table && (
+        <>
+          <Separator />
+
+          <SnFilter
+            table={table.meta!.name.value}
+            encodedQuery={query}
+            initialOpenState="open"
+            onQueryBuilt={(q) => {
+              console.log("Q:", q);
+            }}
+          />
+        </>
+      )}
+    </div>
+  );
+
   return (
     <div>
       <h2 className="text-xl font-semibold mb-4">General ServiceNow UI Components</h2>
-      <SnTabsDemo picker={pickerNode} attachments={attachmentsNode} activity={activityNode} />
+
+      <SnTabsDemo
+        picker={pickerNode}
+        attachments={attachmentsNode}
+        activity={activityNode}
+        conditions={conditionNode}
+      />
     </div>
   );
 }

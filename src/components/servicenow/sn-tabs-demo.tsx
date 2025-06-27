@@ -5,10 +5,12 @@ export function SnTabsDemo({
   picker,
   attachments,
   activity,
+  conditions
 }: {
   picker: ReactNode;
   attachments: ReactNode;
   activity: ReactNode;
+  conditions: ReactNode;
 }) {
   const tabs = [
     {
@@ -22,6 +24,10 @@ export function SnTabsDemo({
     {
       label: "Activity Stream",
       content: activity
+    },
+    {
+      label: "Condition Builder",
+      content: conditions,
     },
   ];
 

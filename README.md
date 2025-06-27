@@ -270,3 +270,4 @@ Demo Images:
 ![SnUser Cards](/assets/SnGroupDemo.png)
 ![SnForm Demo](/assets/SNDemoFormAlpha.png)
 ![SnActivity Demo](/assets/SNActivityDemo.png)
+![SnFilter Demo](/assets/SNDemoFilter.png)

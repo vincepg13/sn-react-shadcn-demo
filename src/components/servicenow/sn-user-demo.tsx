@@ -11,7 +11,7 @@ export default function SnUserDemo() {
         <SnRecordPicker
           table="sys_user"
           fields={["name", "email"]}
-          metaFields={["title", "photo", "mobile_phone"]}
+          metaFields={["title", "photo", "avatar", "mobile_phone"]}
           query="active=true^nameISNOTEMPTY^emailISNOTEMPTY"
           value={selected}
           multiple={true}
@@ -28,7 +28,7 @@ export default function SnUserDemo() {
                   im={`https://teams.microsoft.com/l/chat/0/0?users=${s.meta.email.value}`}
                   email={s.meta.email.value}
                   phone={s.meta.mobile_phone.value}
-                  image={`/${s.meta.photo.display_value}`}
+                  image={`/${s.meta.avatar.display_value || s.meta.photo.display_value}`}
                   primaryInfo={s.meta.title.display_value}
                 ></SnUserCard>
               )
